@@ -34,18 +34,20 @@ import org.json.JSONObject;
 
 public class MainActivity extends Activity {
 
-    private TextView txtSpeechInput;
+    private TextView speechInput;
+    private TextView translatedText;
     private ImageButton btnSpeak;
     private final int REQ_CODE_SPEECH_INPUT = 100;
     private TextToSpeech t1;
-    private String restUrl = "TRANSLATION API";
+    private String restUrl = "TRANSLATE API";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtSpeechInput = (TextView) findViewById(R.id.txtSpeechInput);
+        speechInput = (TextView) findViewById(R.id.speechInput);
+        translatedText = (TextView) findViewById(R.id.translatedText);
         btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
 
         // hide the action bar
@@ -142,7 +144,7 @@ public class MainActivity extends Activity {
             System.out.println("result: " + result);
             if (activity != null) {
                 t1.speak(result, TextToSpeech.QUEUE_FLUSH, null);
-                txtSpeechInput.setText(result);
+                translatedText.setText(result);
             }
         }
     }
@@ -180,7 +182,7 @@ public class MainActivity extends Activity {
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     String toSpeak = result.get(0);
-                    txtSpeechInput.setText("Translating..." + result.get(0));
+                    speechInput.setText(result.get(0));
                     new HttpAsyncTask(this).execute(restUrl, toSpeak);
                 }
                 break;
