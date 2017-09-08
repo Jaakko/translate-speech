@@ -3,18 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <TextView
-        android:id="@+id/txtSpeechInput"
-        android:layout_width="wrap_content"
+        android:id="@+id/speechInput"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:textColor="@color/white"
         android:textSize="26dp"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/translatedText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -41,5 +45,16 @@
             android:textSize="15dp"
             android:textStyle="normal" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/translatedText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:textColor="@color/white"
+        android:textSize="26dp"
+        android:textStyle="normal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
